@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Add office</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <form>
+        <div class="form-group">
+            <label for="email">Office Name</label>
+            <input type="text" class="form-control" id="email" ng-model="$ctrl.officeName">
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-click="$ctrl.ok()">OK</button>
+    <button class="btn btn-danger" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>

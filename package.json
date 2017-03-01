@@ -1,0 +1,51 @@
+{
+  "name": "nicolas-cage",
+  "version": "1.0.0",
+  "description": "cage style: angular 1.5 using es2015 and babel with webpack",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-animate": "^1.5.0",
+    "angular-ui-router": "0.3.2",
+    "font-awesome": "^4.5.0",
+    "font-awesome-webpack": "0.0.4",
+    "normalize.css": "^3.0.3"
+  },
+  "devDependencies": {
+    "angular-bootstrap-grid-tree": "latest",
+    "angular-ui-bootstrap": "latest",
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.5.1",
+    "babel-eslint": "^4.1.8",
+    "babel-loader": "^6.2.2",
+    "babel-polyfill": "^6.5.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-1": "^6.5.0",
+    "bootstrap-sass": "latest",
+    "browser-sync": "^2.11.1",
+    "css-loader": "^0.23.1",
+    "eslint": "2.2.*",
+    "eslint-config-airbnb": "^6.0.2",
+    "eslint-plugin-babel": "^3.1.0",
+    "eslint-plugin-react": "^4.1.0",
+    "file-loader": "^0.8.5",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "jasmine": "^2.4.1",
+    "node-libs-browser": "^1.0.0",
+    "node-sass": "^4.5.0",
+    "raw-loader": "^0.5.1",
+    "run-sequence": "^1.1.5",
+    "sass": "latest",
+    "sass-loader": "^6.0.1",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.14.0",
+    "webpack-stream": "^3.1.0"
+  }
+}
