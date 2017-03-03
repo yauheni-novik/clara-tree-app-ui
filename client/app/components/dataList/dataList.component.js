@@ -9,6 +9,6 @@ export const dataListComponent = {
     template,
     controller,
     bindings: {
-        list: '='
+        list: '<'
     }
 };

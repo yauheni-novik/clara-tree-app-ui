@@ -1,6 +1,8 @@
 /**
  * Created by Yauheni_Novik on 2/28/2017.
  */
+import angular from 'angular';
+
 class EditMetadataCtrl {
     officeName = '';
 
@@ -10,7 +12,7 @@ class EditMetadataCtrl {
         this.$uibModalInstance = $uibModalInstance;
         this.editNode = editNode;
         this.treeData = treeData;
-        this.list = editNode.metadata.users;
+        this.list = angular.copy(editNode.metadata.users);
     }
 
     ok() {
@@ -18,10 +20,14 @@ class EditMetadataCtrl {
             _id: this.editNode._id,
             title: this.editNode.title,
             parent: this.editNode.parent,
-            metadata: this.editNode.metadata
+            metadata: {
+                users: this.list
+            }
         };
 
-        this.officeService.updateNode(newNode);
+        this.officeService.updateNode(newNode).then((node) => {
+            this.editNode.metadata = node.metadata;
+        });
         this.$uibModalInstance.close();
     }
 
