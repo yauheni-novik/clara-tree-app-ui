@@ -1,0 +1,28 @@
+<label>Users</label>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="elem-inline">
+            <div class="elem-inline-block">
+                <input type="text" class="form-control" ng-model="$ctrl.item">
+            </div>
+            <div class="elem-inline-block">
+                <button class="btn" ng-click="$ctrl.addItem()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="list-wrapper">
+            <div class="list-group">
+                <a class="list-group-item" ng-repeat="item in $ctrl.list">
+                    <span>{{item}}</span>
+
+                    <div class="list-item-remove" ng-click="$ctrl.removeItem($index)">
+                        <span class="glyphicon glyphicon-folder-close"></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

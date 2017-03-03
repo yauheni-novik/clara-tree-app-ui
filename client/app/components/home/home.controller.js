@@ -1,5 +1,7 @@
-import addOfficeTemplate from './modal/addOffice.modal.html';
-import { AddOfficeCtrl } from './addOffice.controller';
+import addOfficeTemplate from './modal/addOffice/addOffice.modal.html';
+import editMetadataTemplate from './modal/editMetadata/editMetadata.modal.html';
+import { AddOfficeCtrl } from './modal/addOffice/addOffice.controller.js';
+import { EditMetadataCtrl } from './modal/editMetadata/editMetadata.controller.js';
 
 class HomeController {
     constructor($scope, officeService, $uibModal) {
@@ -26,8 +28,8 @@ class HomeController {
                     '<button ng-click="cellTemplateScope.delete(row.branch, $parent.tree_rows)" ' +
                     'class="btn glyphicon glyphicon-trash" />',
                 cellTemplateScope: {
-                    edit: (data) => {
-                        console.log(data);
+                    edit: (node) => {
+                        this.openEditMetadataModal(node);
                     },
                     add: (node) => {
                         this.openAddNodeModal(node);
@@ -58,6 +60,19 @@ class HomeController {
             backdrop: false,
             resolve: {
                 parentNode: () => parentNode,
+                treeData: () => this.tree_data
+            }
+        });
+    }
+
+    openEditMetadataModal(parentNode) {
+        this.$uibModal.open({
+            template: editMetadataTemplate,
+            controller: EditMetadataCtrl,
+            controllerAs: '$ctrl',
+            backdrop: false,
+            resolve: {
+                editNode: () => parentNode,
                 treeData: () => this.tree_data
             }
         });

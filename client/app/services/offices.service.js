@@ -10,7 +10,6 @@ export default class Offices {
     }
 
     addNode(node) {
-        console.log(this._AppConstants.api);
         return this._$http({
             url: `${this._AppConstants.api}/nodes`,
             method: 'POST',
@@ -29,6 +28,14 @@ export default class Offices {
         return this._$http({
             url: `${this._AppConstants.api}/nodes/${nodeId}`,
             method: 'DELETE'
+        }).then((res) => res.data);
+    }
+
+    updateNode(node) {
+        return this._$http({
+            url: `${this._AppConstants.api}/nodes`,
+            method: 'PUT',
+            data: node
         }).then((res) => res.data);
     }
 }

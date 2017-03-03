@@ -15,7 +15,8 @@ class AddOfficeCtrl {
     ok() {
         const newOffice = {
             title: this.officeName,
-            parent: this.parentNode ? this.parentNode._id : null
+            parent: this.parentNode ? this.parentNode._id : null,
+            metadata: { users: [] }
         };
 
         this.officeService.addNode(newOffice).then((node) => {

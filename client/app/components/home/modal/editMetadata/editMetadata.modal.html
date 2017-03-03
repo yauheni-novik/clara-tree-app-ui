@@ -1,0 +1,10 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Edit metadata</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <list-items list="$ctrl.list"></list-items>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-click="$ctrl.ok()" ng-disabled="!$ctrl.list || $ctrl.list.length === 0">OK</button>
+    <button class="btn btn-danger" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>

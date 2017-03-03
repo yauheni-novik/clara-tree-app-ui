@@ -10,6 +10,6 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-success" type="button" ng-click="$ctrl.ok()">OK</button>
+    <button class="btn btn-success" type="button" ng-click="$ctrl.ok()" ng-disabled="!$ctrl.officeName">OK</button>
     <button class="btn btn-danger" type="button" ng-click="$ctrl.cancel()">Cancel</button>
 </div>

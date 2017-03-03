@@ -1,0 +1,24 @@
+.list-wrapper{
+  height: 216px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  .list-item-remove {
+    position: absolute;
+    right: 12px;
+    top: 5px;
+    cursor: pointer;
+    font-size: 2.0625rem;
+  }
+  .list-item-remove :hover {
+    color: #ec5862;
+  }
+}
+.list-header{
+  margin: 0;
+}
+.elem-inline{
+  display: inline;
+}
+.elem-inline-block{
+  display: inline-block;
+}
