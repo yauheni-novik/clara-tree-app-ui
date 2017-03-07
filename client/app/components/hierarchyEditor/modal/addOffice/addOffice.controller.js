@@ -5,7 +5,6 @@ class AddOfficeCtrl {
     officeName = '';
 
     constructor($uibModalInstance, officeService, parentNode, treeData) {
-        this.title = 'Nicolas Cage';
         this.officeService = officeService;
         this.$uibModalInstance = $uibModalInstance;
         this.parentNode = parentNode;
@@ -15,12 +14,12 @@ class AddOfficeCtrl {
     ok() {
         const newOffice = {
             title: this.officeName,
-            parent: this.parentNode ? this.parentNode._id : null,
+            parent: typeof this.parentNode === 'object' ? this.parentNode._id : this.parentNode,
             metadata: { users: [] }
         };
 
         this.officeService.addNode(newOffice).then((node) => {
-            if (this.parentNode) {
+            if (typeof this.parentNode === 'object') {
                 this.parentNode.children.push(node);
             } else {
                 this.treeData.push(node);

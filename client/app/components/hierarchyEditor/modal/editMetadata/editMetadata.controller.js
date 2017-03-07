@@ -7,7 +7,6 @@ class EditMetadataCtrl {
     officeName = '';
 
     constructor($uibModalInstance, officeService, editNode, treeData) {
-        this.title = 'Nicolas Cage';
         this.officeService = officeService;
         this.$uibModalInstance = $uibModalInstance;
         this.editNode = editNode;

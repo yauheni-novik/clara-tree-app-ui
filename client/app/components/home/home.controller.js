@@ -1,97 +1,35 @@
-import addOfficeTemplate from './modal/addOffice/addOffice.modal.html';
-import editMetadataTemplate from './modal/editMetadata/editMetadata.modal.html';
-import { AddOfficeCtrl } from './modal/addOffice/addOffice.controller.js';
-import { EditMetadataCtrl } from './modal/editMetadata/editMetadata.controller.js';
+import addHierarchyTemplate from './modal/addHierarchy.modal.html';
+import { AddHierarchyCtrl } from './modal/addHierarchy.controller';
 
 class HomeController {
-    constructor($scope, officeService, $uibModal) {
-        this.title = 'Nicolas Cage';
-        this.officeService = officeService;
+    constructor(hierarchyService, $uibModal) {
+        this.hierarchyService = hierarchyService;
         this.$uibModal = $uibModal;
-
-        this.tree_data = [];
-
-        this.loadTree();
-
-        this.expanding_property = {
-            field: 'title',
-            displayName: 'Name'
-        };
-
-        this.col_defs = [
-            {
-                field: 'actions',
-                displayName: 'Actions',
-                cellTemplate:
-                    '<button ng-click="cellTemplateScope.add(row.branch)" class="btn glyphicon glyphicon-plus" />' +
-                    '<button ng-click="cellTemplateScope.edit(row.branch)" class="btn glyphicon glyphicon-pencil" />' +
-                    '<button ng-click="cellTemplateScope.delete(row.branch, $parent.tree_rows)" ' +
-                    'class="btn glyphicon glyphicon-trash" />',
-                cellTemplateScope: {
-                    edit: (node) => {
-                        this.openEditMetadataModal(node);
-                    },
-                    add: (node) => {
-                        this.openAddNodeModal(node);
-                    },
-                    delete: (node, treeNodes) => {
-                        officeService.revomeNode(node._id).then(() => {
-                            if (!node.parent) {
-                                const indexRemovedNode = this.tree_data.findIndex((item) => item._id === node._id);
-                                this.tree_data.splice(indexRemovedNode, 1);
-                            } else {
-                                const parentNode = treeNodes.find((item) => item.branch._id === node.parent);
-                                const indexRemovedNode = parentNode.branch.children
-                                    .findIndex((item) => item._id === node._id);
-                                parentNode.branch.children.splice(indexRemovedNode, 1);
-                            }
-                        });
-                    }
-                }
-            }
-        ];
+        this.loadHierarchies();
     }
 
-    openAddNodeModal(parentNode) {
+    openAddHierarchyModal() {
         this.$uibModal.open({
-            template: addOfficeTemplate,
-            controller: AddOfficeCtrl,
+            template: addHierarchyTemplate,
+            controller: AddHierarchyCtrl,
             controllerAs: '$ctrl',
-            backdrop: false,
-            resolve: {
-                parentNode: () => parentNode,
-                treeData: () => this.tree_data
-            }
+            backdrop: false
+        }).result.then(() => {
+            this.loadHierarchies();
         });
     }
 
-    openEditMetadataModal(parentNode) {
-        this.$uibModal.open({
-            template: editMetadataTemplate,
-            controller: EditMetadataCtrl,
-            controllerAs: '$ctrl',
-            backdrop: false,
-            resolve: {
-                editNode: () => parentNode,
-                treeData: () => this.tree_data
-            }
+    loadHierarchies() {
+        this.hierarchyService.getAllHierarchies().then((hierarchies) => {
+            this.hierarchies = hierarchies;
         });
     }
 
-    loadTree() {
-        this.officeService.getAllNodes().then((nodes) => {
-            this.tree_data = nodes;
-        });
-    }
-
-    $onInit() {
-        this.loadGiphs();
-    }
-
-    loadGiphs() {
+    deleteHierarchy(hierarchy) {
+        this.hierarchyService.revomeHierarchy(hierarchy._id).then(() => this.loadHierarchies());
     }
 }
 
-HomeController.$inject = ['$scope', 'Offices', '$uibModal'];
+HomeController.$inject = ['Hierarchies', '$uibModal'];
 
 export { HomeController };

@@ -1,0 +1,6 @@
+<div class="panel">
+    <button type="button" class="btn btn-default" ng-click="$ctrl.openAddNodeModal($ctrl.rootHierarchyId)">
+        <span class="glyphicon glyphicon-plus"></span> Add Item
+    </button>
+</div>
+<tree-grid tree_data="$ctrl.tree_data" expand-on="$ctrl.expanding_property" col-defs="$ctrl.col_defs"></tree-grid>

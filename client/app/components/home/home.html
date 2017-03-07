@@ -1,9 +1,27 @@
 <div class="home">
-  <div class="panel">
-    <button type="button" class="btn btn-default" ng-click="$ctrl.openAddNodeModal()">
-      <span class="glyphicon glyphicon-plus"></span> Add Item
-    </button>
-  </div>
-  <tree-grid
-    tree_data="$ctrl.tree_data" expand-on="$ctrl.expanding_property" col-defs= "$ctrl.col_defs"></tree-grid>
+    <div class="panel">
+        <button type="button" class="btn btn-default" ng-click="$ctrl.openAddHierarchyModal()">
+            <span class="glyphicon glyphicon-plus"></span> Add hierarchy
+        </button>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Created date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in $ctrl.hierarchies">
+                <th><a ui-sref="hierarchy({id: item._id})" class="hierarchy-link">{{item.name}}</a></th>
+                <th>{{item.description}}</th>
+                <th>{{item.createdDate | date :  "MM.dd.yyyy" }}</th>
+                <th>
+                    <button ng-click="$ctrl.deleteHierarchy(item)" class="btn glyphicon glyphicon-trash" />
+                </th>
+            </tr>
+        </tbody>
+    </table>
 </div>

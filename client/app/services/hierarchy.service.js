@@ -1,7 +1,7 @@
 /**
- * Created by Yauheni_Novik on 2/28/2017.
+ * Created by Yauheni_Novik on 3/7/2017.
  */
-export default class Offices {
+export default class Hierarchies {
     constructor($http, AppConstants) {
         'ngInject';
 
@@ -9,33 +9,33 @@ export default class Offices {
         this._AppConstants = AppConstants;
     }
 
-    addNode(node) {
+    addHierarchy(hierarchy) {
         return this._$http({
-            url: `${this._AppConstants.api}/nodes`,
+            url: `${this._AppConstants.api}/hierarchies`,
             method: 'POST',
-            data: node
+            data: hierarchy
         }).then((res) => res.data);
     }
 
-    getAllNodes(parentId) {
+    getAllHierarchies() {
         return this._$http({
-            url: `${this._AppConstants.api}/nodes?parentId=${parentId}`,
+            url: `${this._AppConstants.api}/hierarchies`,
             method: 'GET'
         }).then((res) => res.data);
     }
 
-    revomeNode(nodeId) {
+    revomeHierarchy(hierarchyId) {
         return this._$http({
-            url: `${this._AppConstants.api}/nodes/${nodeId}`,
+            url: `${this._AppConstants.api}/hierarchies/${hierarchyId}`,
             method: 'DELETE'
         }).then((res) => res.data);
     }
 
-    updateNode(node) {
+    updateHierarchy(hierarchy) {
         return this._$http({
-            url: `${this._AppConstants.api}/nodes`,
+            url: `${this._AppConstants.api}/hierarchies`,
             method: 'PUT',
-            data: node
+            data: hierarchy
         }).then((res) => res.data);
     }
 }

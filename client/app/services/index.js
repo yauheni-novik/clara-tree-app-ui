@@ -7,7 +7,9 @@ import angular from 'angular';
 const servicesModule = angular.module('app.services', []);
 
 // Services
-import OfficeService from './offices.service.js';
+import OfficeService from './offices.service';
+import HierarchyService from './hierarchy.service';
 servicesModule.service('Offices', OfficeService);
+servicesModule.service('Hierarchies', HierarchyService);
 
 export default servicesModule;
