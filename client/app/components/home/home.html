@@ -17,7 +17,7 @@
             <tr ng-repeat="item in $ctrl.hierarchies">
                 <th><a ui-sref="hierarchy({id: item._id})" class="hierarchy-link">{{item.name}}</a></th>
                 <th>{{item.description}}</th>
-                <th>{{item.createdDate | date :  "MM.dd.yyyy" }}</th>
+                <th>{{item.createdDate | date :  "MM.dd.yyyy h:mm:ss a" }}</th>
                 <th>
                     <button ng-click="$ctrl.deleteHierarchy(item)" class="btn glyphicon glyphicon-trash" />
                 </th>
