@@ -9,12 +9,13 @@ var HomePage = function () {
     this.addHierarchyButton = element(by.css('.home .panel button'));
     this.okModalButton = element(by.css('.btn.btn-success'))
     this.modalTitle = element(by.css('.modal-title'));
+    this.pageHeaderTitle = element(by.css('.header-title'))
 
     this.goHomePage = function (url) {
         browser.driver.get(url);
     };
-    this.hierarchyTDByName = function (name){
-        return element(by.cssContainingText(".wk-table tbody tr td a", name));
+    this.hierarchyLINKByName = function (name){
+        return element(by.cssContainingText(".table tbody tr td a", name));
     };
     this.deleteButtonByName = function (name) {
         return getRowElemByName(name).element(by.css('.glyphicon-trash'));

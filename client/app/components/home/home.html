@@ -1,4 +1,7 @@
 <div class="home">
+    <div class="app-header">
+        <h3 class="header-title">List Hierarchies</h3>
+    </div>
     <div class="panel">
         <button type="button" class="btn btn-default" ng-click="$ctrl.openAddHierarchyModal()">
             <span class="glyphicon glyphicon-plus"></span> Add hierarchy
@@ -15,12 +18,12 @@
         </thead>
         <tbody>
             <tr ng-repeat="item in $ctrl.hierarchies">
-                <th><a ui-sref="hierarchy({id: item._id})" class="hierarchy-link">{{item.name}}</a></th>
-                <th>{{item.description}}</th>
-                <th>{{item.createdDate | date :  "MM.dd.yyyy h:mm:ss a" }}</th>
-                <th>
+                <td><a ui-sref="hierarchy({id: item._id})" class="hierarchy-link">{{item.name}}</a></td>
+                <td>{{item.description}}</td>
+                <td>{{item.createdDate | date :  "MM.dd.yyyy h:mm:ss a" }}</td>
+                <td>
                     <button ng-click="$ctrl.deleteHierarchy(item)" class="btn glyphicon glyphicon-trash" />
-                </th>
+                </td>
             </tr>
         </tbody>
     </table>
